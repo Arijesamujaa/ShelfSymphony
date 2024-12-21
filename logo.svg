@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="200" height="200">
+    <!-- Background gradient for the house -->
+    <defs>
+        <linearGradient id="roofGradient" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#4A4A4A" />
+            <stop offset="100%" stop-color="#1A1A1A" />
+        </linearGradient>
+        <linearGradient id="doorGradient" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#CCCCCC" />
+            <stop offset="100%" stop-color="#808080" />
+        </linearGradient>
+    </defs>
+
+    <!-- House outline -->
+    <polygon points="10,50 50,10 90,50 90,90 10,90" stroke="black" stroke-width="2" fill="url(#roofGradient)" />
+
+    <!-- Door -->
+    <rect x="35" y="50" width="30" height="40" rx="2" ry="2" fill="url(#doorGradient)" />
+    <!-- Door panel -->
+    <rect x="40" y="55" width="20" height="10" fill="white" />
+    <!-- Door horizontal line -->
+    <line x1="40" y1="70" x2="60" y2="70" stroke="white" stroke-width="2" />
+
+    <!-- Book spine -->
+    <line x1="50" y1="55" x2="50" y2="90" stroke="black" stroke-width="2" />
+
+    <!-- Decorative book effect -->
+    <circle cx="50" cy="75" r="1" fill="#606060" />
+    <circle cx="50" cy="78" r="1" fill="#606060" />
+    <circle cx="50" cy="81" r="1" fill="#606060" />
+
+    <!-- Shadow under house -->
+    <ellipse cx="50" cy="95" rx="40" ry="5" fill="#00000020" />
+</svg>
