@@ -30,7 +30,7 @@ if(isset($_POST['submit']))
                 $_SESSION['name'] = $data['name'];
                 $_SESSION['is_admin'] = $data['is_admin'];
 
-                header('Location: dashboard.php');
+                header('Location: admin_dashboard.php');
             } else {
                 echo "The password is not valid";
             }
@@ -71,7 +71,7 @@ if(isset($_POST['submit']))
                                         <form>
 
                                             <div class="d-flex align-items-center mb-3 pb-1">
-                                                <img src="logo.svg" alt="ShelfSymphony Logo" width="200" height="50">
+                                                <img src="images/svg/logo.svg" alt="ShelfSymphony Logo" width="200" height="50">
                                             </div>
 
                                             <h5 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Log into your account</h5>

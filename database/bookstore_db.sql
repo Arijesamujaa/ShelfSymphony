@@ -52,4 +52,7 @@ CREATE TABLE `products` (
   PRIMARY KEY (`id`)
 );
 
+ALTER TABLE `products`
+ADD COLUMN `description` TEXT NOT NULL;
+
 

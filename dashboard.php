@@ -14,3 +14,6 @@ if ($_SESSION['is_admin'] == 1) {
     header('Location: user_home.php');
     exit;
 }
+
+
+?>
