@@ -30,7 +30,11 @@ if(isset($_POST['submit']))
                 $_SESSION['name'] = $data['name'];
                 $_SESSION['is_admin'] = $data['is_admin'];
 
-                header('Location: admin_dashboard.php');
+                if ($_SESSION['is_admin'] == 1) {
+                    header('Location: admin_dashboard.php');
+                } else {
+                    header('Location: user_home.php');
+                }
             } else {
                 echo "The password is not valid";
             }

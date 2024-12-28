@@ -1,0 +1,140 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+}
+
+.navbar-logo {
+    width: 40px;
+    height: auto;
+    margin-right: 0.5rem;
+}
+
+.navbar-brand {
+    display: flex;
+    align-items: center;
+    font-family: "Cursive", sans-serif;
+    font-size: 1.5rem;
+    color: #fff;
+    text-decoration: none;
+}
+
+.nav ul {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.nav-item {
+    margin: 0 1rem;
+}
+
+.nav-link {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 500;
+    text-transform: uppercase;
+}
+
+.nav-link.active {
+    color: #b88a00;
+    font-weight: bold;
+    border-bottom: 2px solid #b88a00;
+}
+
+.nav-link:hover {
+    color: #ffc107;
+}
+
+.nav-icon {
+    color: #fff;
+    font-size: 1.2rem;
+    margin-left: 1rem;
+    text-decoration: none;
+}
+
+.dropdown{
+    overflow: hidden;
+}
+
+.dropdown:hover{
+    overflow: visible;
+}
+
+.dropdown-menu {
+    position: absolute;
+    left: 0;
+    top: 100%;
+    white-space: nowrap;
+}
+
+.dropdown:hover .dropdown-menu {
+    display: block;
+    color: #fff;
+}
+
+.dropdown-item:active{
+    background-color: #3e3e3e;
+}
+
+.bg-image {
+    background-image: url("../images/bookstore-background.jpeg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* align-items: flex-end; */
+    align-items: center;
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.7);
+    opacity: 0.9;
+}
+
+.bg-image h2 {
+    font-size: 3rem;
+    font-weight: bold;
+    color: #fff;
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+    /* text-align: right; */
+}
+
+.bg-image h3 {
+    font-size: 2rem;
+    font-weight: 500;
+    color: #f0f0f0;
+    margin-bottom: 1rem;
+    font-style: italic;
+    /* text-align: right; */
+}
+
+.bg-image p {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    color: #e0e0e0;
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto;
+    /* text-align: right; */
+}
+
+#about-us{
+    margin: 20px 40px 20px 40px;
+}
+
+#about-us .img-fluid {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+    transition: transform 0.3s ease-in-out;
+}
+
+#about-us .img-fluid:hover {
+    transform: scale(1.05);
+}

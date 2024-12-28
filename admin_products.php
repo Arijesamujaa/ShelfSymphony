@@ -15,7 +15,7 @@
         <?php include('sidebar.php'); ?>
 
         <div class="col py-3">
-            <div class="container">
+            <div class="container my-4">
                 <div class="row">
                     <div class="col-md-9">
                         <h2>Products</h2>
@@ -98,7 +98,7 @@
                                     <div class="modal-body">
                                         <form action="save_update_product.php" method="POST" enctype="multipart/form-data">
                                             <input type="hidden" name="productId" value="<?= $product['id'] ?>">
-                                            <input type="hidden" name="currentImage" value="<?= $product['image'] ?>"> <!-- Hidden input to store the current image -->
+                                            <input type="hidden" name="currentImage" value="<?= $product['image'] ?>"> 
 
                                             <div class="mb-3">
                                                 <label for="productName" class="form-label">Product Name</label>
