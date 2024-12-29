@@ -46,13 +46,15 @@ CREATE TABLE `orders` (
 
 CREATE TABLE `products` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `name` varchar(100) NOT NULL,
+  `title` varchar(100) NOT NULL,
+  `author` varchar(100) NOT NULL,
+  `genre` varchar(100) NOT NULL,
+  `description` TEXT NOT NULL,
   `price` int NOT NULL,
   `image` varchar(100) NOT NULL,
   PRIMARY KEY (`id`)
 );
 
-ALTER TABLE `products`
-ADD COLUMN `description` TEXT NOT NULL;
+
 
 

@@ -124,7 +124,7 @@
 }
 
 #about-us{
-    margin: 20px 40px 20px 40px;
+    margin: 20px 40px 0px 40px;
 }
 
 #about-us .img-fluid {
@@ -137,4 +137,21 @@
 
 #about-us .img-fluid:hover {
     transform: scale(1.05);
+}
+
+#bestsellers .card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#bestsellers .card:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+#bestsellers .carousel-inner {
+    padding: 20px;
+}
+
+.carousel-item.row{
+    margin: 50px;
 }

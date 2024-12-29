@@ -34,8 +34,16 @@
                                     <div class="modal-body">
                                         <form action="save_product.php" method="POST" enctype="multipart/form-data">
                                             <div class="mb-3">
-                                                <label for="productName" class="form-label">Product Name</label>
-                                                <input type="text" class="form-control" id="productName" name="productName" required>
+                                                <label for="productTitle" class="form-label">Title</label>
+                                                <input type="text" class="form-control" id="productTitle" name="productTitle" required>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="productAuthor" class="form-label">Author</label>
+                                                <input type="text" class="form-control" id="productAuthor" name="productAuthor" required>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="productGenre" class="form-label">Genre</label>
+                                                <input type="text" class="form-control" id="productGenre" name="productGenre" required>
                                             </div>
                                             <div class="mb-3">
                                                 <label for="productDescription" class="form-label">Product Description</label>
@@ -69,14 +77,16 @@
                 <div class="row row-cols-2 g-3">
                     <?php foreach ($products as $product): ?>
                         <div class="col">
-                            <div class="card mb-3">
+                            <div class="card" style="height: 350px;">
                                 <div class="row g-0">
                                     <div class="col-md-4">
-                                        <img src="<?= htmlspecialchars($product['image']) ?>" alt="<?= htmlspecialchars($product['name']) ?>" class="img-fluid rounded-start h-100" />
+                                        <img src="<?= htmlspecialchars($product['image']) ?>" alt="<?= htmlspecialchars($product['title']) ?>" class="img-fluid rounded-start h-100" style="width: 100%; object-fit: cover;" />
                                     </div>
                                     <div class="col-md-8">
                                         <div class="card-body">
-                                            <h5 class="card-title"><?= htmlspecialchars($product['name']) ?></h5>
+                                            <h5 class="card-title"><?= htmlspecialchars($product['title']) ?></h5>
+                                            <h6 class="card-text"><?= htmlspecialchars($product['author']) ?></h6>
+                                            <p class="card-text"><?= htmlspecialchars($product['genre']) ?></p>
                                             <p class="card-text"><?= htmlspecialchars($product['description']) ?></p>
                                             <p class="card-text"><small class="text-success">Price: €<?= htmlspecialchars($product['price']) ?></small></p>
                                             <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#updateModal<?= $product['id'] ?>">
@@ -98,11 +108,19 @@
                                     <div class="modal-body">
                                         <form action="save_update_product.php" method="POST" enctype="multipart/form-data">
                                             <input type="hidden" name="productId" value="<?= $product['id'] ?>">
-                                            <input type="hidden" name="currentImage" value="<?= $product['image'] ?>"> 
+                                            <input type="hidden" name="currentImage" value="<?= $product['image'] ?>">
 
                                             <div class="mb-3">
-                                                <label for="productName" class="form-label">Product Name</label>
-                                                <input type="text" class="form-control" id="productName" name="productName" value="<?= htmlspecialchars($product['name']) ?>" required>
+                                                <label for="productTitle" class="form-label">Title</label>
+                                                <input type="text" class="form-control" id="productTitle" name="productTitle" value="<?= htmlspecialchars($product['title']) ?>" required>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="productAuthor" class="form-label">Author</label>
+                                                <input type="text" class="form-control" id="productAuthor" name="productAuthor" value="<?= htmlspecialchars($product['author']) ?>" required>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="productGenre" class="form-label">Genre</label>
+                                                <input type="text" class="form-control" id="productGenre" name="productGenre" value="<?= htmlspecialchars($product['genre']) ?>" required>
                                             </div>
                                             <div class="mb-3">
                                                 <label for="productDescription" class="form-label">Product Description</label>

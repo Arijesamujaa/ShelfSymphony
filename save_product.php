@@ -2,7 +2,9 @@
 include('config.php');
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $name = $_POST['productName'];
+    $title = $_POST['productTitle'];
+    $author = $_POST['productAuthor'];
+    $genre = $_POST['productGenre'];
     $price = $_POST['productPrice'];
     $description = $_POST['productDescription'];
 
@@ -11,11 +13,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $imagePath = 'uploaded_img/' . basename($image);
 
     if (move_uploaded_file($imageTmp, $imagePath)) {
-        $query = "INSERT INTO products (name, price, description, image) VALUES (:name, :price, :description, :image)";
+        $query = "INSERT INTO products (title, author, genre, description, price, image) VALUES (:title, :author, :genre, :description, :price, :image)";
         $stmt = $conn->prepare($query);
-        $stmt->bindParam(':name', $name);
-        $stmt->bindParam(':price', $price);
+        $stmt->bindParam(':title', $title);
+        $stmt->bindParam(':author', $author);
+        $stmt->bindParam(':genre', $genre);
         $stmt->bindParam(':description', $description);
+        $stmt->bindParam(':price', $price);
         $stmt->bindParam(':image', $imagePath);
 
         if ($stmt->execute()) {
