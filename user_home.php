@@ -92,15 +92,59 @@
             </div>
         </section>
 
-        <section class="" id="collection">
-            <section class="m-4" id="bestsellers">
-                <h4 class="display-6 fw-bold">Best Sellers</h4>
+        <section class="collection" id="collection">
+            <div class="bestsellers" style="background-color: rgb(37, 37, 37); margin-top:10px">
+                <section id="bestsellers">
+                    <div class="sectionTitle" style="padding: 20px 0 10px 30px;">
+                        <h4 class="display-6 fw-bold" id="title" style="font-size:xx-large; color:aliceblue;">Best Sellers</h4>
+                    </div>
+                    <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+                        <div class="carousel-inner">
+                            <?php
+                            include('config.php');
+                            $query = "SELECT * FROM products";
+                            $stmt = $conn->prepare($query);
+                            $stmt->execute();
+                            $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                            $chunks = array_chunk($products, 6);
+                            $isFirstSlide = true;
+                            foreach ($chunks as $chunk): ?>
+                                <div class="carousel-item <?= $isFirstSlide ? 'active' : '' ?>">
+                                    <div class="row row-cols-1 row-cols-md-6 g-3">
+                                        <?php foreach ($chunk as $product): ?>
+                                            <div class="col">
+                                                <div class="card" style="height: 330px;">
+                                                    <div class="image-container" style="height: 65%;">
+                                                        <img src="<?= htmlspecialchars($product['image']) ?>" alt="<?= htmlspecialchars($product['title']) ?>" class="card-img-top h-100" style="object-fit: cover;" />
+                                                    </div>
+                                                    <div class="card-body d-flex flex-column justify-content-between" style="height: 35%;">
+                                                        <h6 class="card-title"><?= htmlspecialchars($product['title']) ?></h6>
+                                                        <p class="card-text"><?= htmlspecialchars($product['author']) ?></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        <?php endforeach; ?>
+                                    </div>
+                                </div>
+                                <?php $isFirstSlide = false; ?>
+                            <?php endforeach; ?>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <section class="m-4" id="newarrivals">
+                <h4 class="display-6 fw-bold" style="font-size:xx-large; padding:10px">New Arrivals</h4>
                 <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
                     <div class="carousel-inner">
                         <?php
                         include('config.php');
-                        $query = "SELECT * FROM products";
+
+                        $limit = 5;  
+
+                        $query = "SELECT * FROM products ORDER BY id DESC LIMIT :limit";
                         $stmt = $conn->prepare($query);
+                        $stmt->bindParam(':limit', $limit, PDO::PARAM_INT);
                         $stmt->execute();
                         $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
@@ -109,17 +153,16 @@
 
                         foreach ($chunks as $chunk): ?>
                             <div class="carousel-item <?= $isFirstSlide ? 'active' : '' ?>">
-                                <div class="row row-cols-1 row-cols-md-6 g-4">
+                                <div class="row row-cols-1 row-cols-md-6 g-3">
                                     <?php foreach ($chunk as $product): ?>
                                         <div class="col">
-                                            <div class="card" style="height: 340px;">
+                                            <div class="card" style="height: 330px;">
                                                 <div class="image-container" style="height: 65%;">
                                                     <img src="<?= htmlspecialchars($product['image']) ?>" alt="<?= htmlspecialchars($product['title']) ?>" class="card-img-top h-100" style="object-fit: cover;" />
                                                 </div>
                                                 <div class="card-body d-flex flex-column justify-content-between" style="height: 35%;">
                                                     <h6 class="card-title"><?= htmlspecialchars($product['title']) ?></h6>
                                                     <p class="card-text"><?= htmlspecialchars($product['author']) ?></p>
-                                                    <p class="card-text"><small class="text-success">Price: €<?= htmlspecialchars($product['price']) ?></small></p>
                                                 </div>
                                             </div>
                                         </div>
@@ -133,12 +176,8 @@
             </section>
 
 
-
         </section>
 
-        <section>
-
-        </section>
     </main>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
