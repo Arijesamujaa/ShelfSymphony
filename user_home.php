@@ -31,8 +31,8 @@
                     </a>
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="#bestsellers">Best Sellers</a></li>
-                        <li><a class="dropdown-item" href="#">New Arrivals</a></li>
-                        <li><a class="dropdown-item" href="#">Staff Picks</a></li>
+                        <li><a class="dropdown-item" href="#newarrivals">New Arrivals</a></li>
+                        <li><a class="dropdown-item" href="#booksets">Book Sets</a></li>
                     </ul>
                 </li>
                 <li class="nav-item">
@@ -140,7 +140,7 @@
                         <?php
                         include('config.php');
 
-                        $limit = 5;  
+                        $limit = 5;
 
                         $query = "SELECT * FROM products ORDER BY id DESC LIMIT :limit";
                         $stmt = $conn->prepare($query);
@@ -171,6 +171,60 @@
                             </div>
                             <?php $isFirstSlide = false; ?>
                         <?php endforeach; ?>
+                    </div>
+                </div>
+            </section>
+
+            <section class="m-4" id="booksets">
+                <div class="container text-center">
+                    <h4 class="display-6 fw-bold" style="font-size: xx-large;">Book Sets</h4>
+                    <div class="row g-4">
+                        <div class="col g-4 text-bg-dark p-3">
+                            <div class="bg-dark mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center text-white overflow-hidden">
+                                <div class="my-3 py-3">
+                                    <h2 class="display-5 fw-normal">Shatter Me</h2>
+                                    <p class="lead">Shatter Me Series By Tahereh Mafi 7 Books Collection Set</p>
+                                </div>
+                                <div class="bg-light box-shadow mx-auto" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;">
+                                    <img src="images/bookSets/shatterMe.jpg" alt="Shatter Me" class="img-fluid rounded-start h-100" style="width: 100%; object-fit: cover;">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col g-4">
+                            <div class="bg-light mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
+                                <div class="my-3 p-3">
+                                    <h2 class="display-5 fw-normal">Maze Runner</h2>
+                                    <p class="lead">The Maze Runner Series By James Dashner 5 Books Collection Set</p>
+                                </div>
+                                <div class="bg-dark box-shadow mx-auto" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;">
+                                    <img src="images/bookSets/mazeRunner.jpg" alt="Shatter Me" class="img-fluid rounded-start h-100" style="width: 100%; object-fit: cover;">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row g-4">
+                        <div class="col g-4">
+                            <div class="bg-light mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
+                                <div class="my-3 p-3">
+                                    <h2 class="display-5 fw-normal">A Court of Thrones</h2>
+                                    <p class="lead">A Court of Thorns and Roses 5 Books Box Set by Sarah J. Maas</p>
+                                </div>
+                                <div class="bg-dark box-shadow mx-auto" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;">
+                                    <img src="images/bookSets/courtOfThrones.jpg" alt="Shatter Me" class="img-fluid rounded-start h-100" style="width: 100%; object-fit: cover;">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col g-4 text-bg-dark p-3">
+                            <div class="bg-dark mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center text-white overflow-hidden">
+                                <div class="my-3 py-3">
+                                    <h2 class="display-5 fw-normal">Slammed Series</h2>
+                                    <p class="lead">Slammed Series by Colleen Hoover 3 Books Collection Set - Fiction - Paperback</p>
+                                </div>
+                                <div class="bg-light box-shadow mx-auto" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;">
+                                    <img src="images/bookSets/slammed.jpg" alt="Shatter Me" class="img-fluid rounded-start h-100" style="width: 100%; object-fit: cover;">
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </section>
