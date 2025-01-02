@@ -41,7 +41,7 @@
             </ul>
 
             <div class="d-flex align-items-center">
-                a href="#"><img src="images/svg/cart.svg" alt="Cart Logo" class="cart-logo"></a>
+                <a href="#"><img src="images/svg/cart.svg" alt="Cart Logo" class="cart-logo"></a>
                 <a href="" style="margin-left: 20px;"><img src="images/svg/profile.svg" alt="Profile Logo" class="profile-logo"></a>
             </div>
 
@@ -65,7 +65,7 @@
                 <div class="row gx-4 align-items-center justify-content-between">
                     <div class="col-md-5 order-2 order-md-1">
                         <div class="mt-5 mt-md-0">
-                            <h2 class="display-5 fw-bold">About Us</h2>
+                            <h4 class="display-6 fw-bold">About Us</h4>
                             <br>
                             <p><em>At Shelf Symphony, we believe books are more than just words on a page;
                                     they're symphonies of stories that resonate with your soul. Our curated selection of
@@ -94,119 +94,44 @@
 
         <section class="" id="collection">
             <section class="m-4" id="bestsellers">
-                <h2 class="text-center mb-4">Best Sellers</h2>
+                <h4 class="display-6 fw-bold">Best Sellers</h4>
                 <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
                     <div class="carousel-inner">
-                        <!-- Slide 1 -->
-                        <div class="carousel-item active">
-                            <div class="row row-cols-1 row-cols-md-6 g-4">
-                                <div class="col">
-                                    <div class="card" style="height: 320px;">
-                                        <div class="image-container" style="height: 65%;">
-                                            <img src="images/bookstore.jpg" class="card-img-top h-100" alt="Bookstore" style="object-fit: cover;">
-                                        </div>
-                                        <div class="card-body d-flex flex-column justify-content-between" style="height: 35%;">
-                                            <h6 class="card-title">Book Title</h6>
-                                            <p class="card-text">Author</p>
-                                            <p class="card-text"><small class="text-success">Price</small></p>
-                                        </div>
-                                    </div>
-                                </div>
+                        <?php
+                        include('config.php');
+                        $query = "SELECT * FROM products";
+                        $stmt = $conn->prepare($query);
+                        $stmt->execute();
+                        $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-                                <div class="col">
-                                    <div class="card" style="height: 320px;">
-                                        <div class="image-container" style="height: 65%;">
-                                            <img src="images/bookstore_2.jpg" class="card-img-top h-100" alt="Bookstore" style="object-fit: cover;">
-                                        </div>
-                                        <div class="card-body d-flex flex-column justify-content-between" style="height: 35%;">
-                                            <h6 class="card-title">Book Title</h6>
-                                            <p class="card-text">Author</p>
-                                            <p class="card-text"><small class="text-success">Price</small></p>
-                                        </div>
-                                    </div>
-                                </div>
+                        $chunks = array_chunk($products, 6);
+                        $isFirstSlide = true;
 
-                                <div class="col">
-                                    <div class="card" style="height: 320px;">
-                                        <div class="image-container" style="height: 65%;">
-                                            <img src="images/bookstore_3.jpg" class="card-img-top h-100" alt="Bookstore" style="object-fit: cover;">
+                        foreach ($chunks as $chunk): ?>
+                            <div class="carousel-item <?= $isFirstSlide ? 'active' : '' ?>">
+                                <div class="row row-cols-1 row-cols-md-6 g-4">
+                                    <?php foreach ($chunk as $product): ?>
+                                        <div class="col">
+                                            <div class="card" style="height: 340px;">
+                                                <div class="image-container" style="height: 65%;">
+                                                    <img src="<?= htmlspecialchars($product['image']) ?>" alt="<?= htmlspecialchars($product['title']) ?>" class="card-img-top h-100" style="object-fit: cover;" />
+                                                </div>
+                                                <div class="card-body d-flex flex-column justify-content-between" style="height: 35%;">
+                                                    <h6 class="card-title"><?= htmlspecialchars($product['title']) ?></h6>
+                                                    <p class="card-text"><?= htmlspecialchars($product['author']) ?></p>
+                                                    <p class="card-text"><small class="text-success">Price: €<?= htmlspecialchars($product['price']) ?></small></p>
+                                                </div>
+                                            </div>
                                         </div>
-                                        <div class="card-body d-flex flex-column justify-content-between" style="height: 35%;">
-                                            <h6 class="card-title">Book Title</h6>
-                                            <p class="card-text">Author</p>
-                                            <p class="card-text"><small class="text-success">Price</small></p>
-                                        </div>
-                                    </div>
+                                    <?php endforeach; ?>
                                 </div>
                             </div>
-                        </div>
-                        <!-- Slide 2 -->
-                        <div class="carousel-item">
-                            <div class="row row-cols-1 row-cols-md-6 g-4">
-                                <div class="col">
-                                    <div class="card h-100">
-                                        <img src="images/bookstore_4.jpg" class="card-img-top" alt="Bookstore 4">
-                                        <div class="card-body">
-                                            <h5 class="card-title">Card Title 4</h5>
-                                            <p class="card-text">Short description for card 4.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col">
-                                    <div class="card h-100">
-                                        <img src="images/bookstore.jpg" class="card-img-top" alt="Bookstore">
-                                        <div class="card-body">
-                                            <h5 class="card-title">Card Title 5</h5>
-                                            <p class="card-text">Short description for card 5.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col">
-                                    <div class="card h-100">
-                                        <img src="images/bookstore_2.jpg" class="card-img-top" alt="Bookstore 2">
-                                        <div class="card-body">
-                                            <h5 class="card-title">Card Title 6</h5>
-                                            <p class="card-text">Short description for card 6.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Slide 3 -->
-                        <div class="carousel-item">
-                            <div class="row row-cols-1 row-cols-md-6 g-4">
-                                <div class="col">
-                                    <div class="card h-100">
-                                        <img src="images/bookstore_3.jpg" class="card-img-top" alt="Bookstore 3">
-                                        <div class="card-body">
-                                            <h5 class="card-title">Card Title 7</h5>
-                                            <p class="card-text">Short description for card 7.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col">
-                                    <div class="card h-100">
-                                        <img src="images/bookstore_4.jpg" class="card-img-top" alt="Bookstore 4">
-                                        <div class="card-body">
-                                            <h5 class="card-title">Card Title 8</h5>
-                                            <p class="card-text">Short description for card 8.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col">
-                                    <div class="card h-100">
-                                        <img src="images/bookstore.jpg" class="card-img-top" alt="Bookstore">
-                                        <div class="card-body">
-                                            <h5 class="card-title">Card Title 9</h5>
-                                            <p class="card-text">Short description for card 9.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                            <?php $isFirstSlide = false; ?>
+                        <?php endforeach; ?>
                     </div>
                 </div>
             </section>
+
 
 
         </section>

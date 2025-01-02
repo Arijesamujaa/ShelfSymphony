@@ -87,7 +87,10 @@
                                             <h5 class="card-title"><?= htmlspecialchars($product['title']) ?></h5>
                                             <h6 class="card-text"><?= htmlspecialchars($product['author']) ?></h6>
                                             <p class="card-text"><?= htmlspecialchars($product['genre']) ?></p>
-                                            <p class="card-text"><?= htmlspecialchars($product['description']) ?></p>
+                                            <div class="description-container">
+                                                <p class="card-text description" id="cutoff-text"><?= htmlspecialchars($product['description']) ?></p>
+                                                <button class="btn btn-link toggle-btn" onclick="toggleDescription(this)" style="text-decoration: none; color:darkgreen">Read More</button>
+                                            </div>
                                             <p class="card-text"><small class="text-success">Price: €<?= htmlspecialchars($product['price']) ?></small></p>
                                             <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#updateModal<?= $product['id'] ?>">
                                                 Update
@@ -148,7 +151,7 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="admin_dashboard.js"></script>
+    <script src="js/admin_products.js"></script>
 </body>
 
 </html>
