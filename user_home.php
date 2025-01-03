@@ -36,7 +36,7 @@
                     </ul>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Why us?</a>
+                    <a class="nav-link" href="#whyUs">Why us?</a>
                 </li>
             </ul>
 
@@ -57,6 +57,12 @@
                 <p>Discover a world of imagination, knowledge, and inspiration.
                     From timeless classics to the latest bestsellers, find your next favorite book right here.
                 </p>
+                <br>
+                <!-- <a href="user_home_more.php">
+                    <button type="button" class="home_btn btn btn-outline-light" style="width: 150px;">
+                        More
+                    </button>
+                </a> -->
             </div>
         </section>
 
@@ -112,17 +118,19 @@
                                 <div class="carousel-item <?= $isFirstSlide ? 'active' : '' ?>">
                                     <div class="row row-cols-1 row-cols-md-6 g-3">
                                         <?php foreach ($chunk as $product): ?>
-                                            <div class="col">
-                                                <div class="card" style="height: 330px;">
-                                                    <div class="image-container" style="height: 65%;">
-                                                        <img src="<?= htmlspecialchars($product['image']) ?>" alt="<?= htmlspecialchars($product['title']) ?>" class="card-img-top h-100" style="object-fit: cover;" />
-                                                    </div>
-                                                    <div class="card-body d-flex flex-column justify-content-between" style="height: 35%;">
-                                                        <h6 class="card-title"><?= htmlspecialchars($product['title']) ?></h6>
-                                                        <p class="card-text"><?= htmlspecialchars($product['author']) ?></p>
+                                            <a href="book-details.php?id=<?= htmlspecialchars($product['id']) ?>" style="text-decoration: none; color: inherit;">
+                                                <div class="col">
+                                                    <div class="card" style="height: 330px;">
+                                                        <div class="image-container" style="height: 65%;">
+                                                            <img src="<?= htmlspecialchars($product['image']) ?>" alt="<?= htmlspecialchars($product['title']) ?>" class="card-img-top h-100" style="object-fit: cover;" />
+                                                        </div>
+                                                        <div class="card-body d-flex flex-column justify-content-between" style="height: 35%;">
+                                                            <h6 class="card-title"><?= htmlspecialchars($product['title']) ?></h6>
+                                                            <p class="card-text"><?= htmlspecialchars($product['author']) ?></p>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
+                                            </a>
                                         <?php endforeach; ?>
                                     </div>
                                 </div>
@@ -155,17 +163,19 @@
                             <div class="carousel-item <?= $isFirstSlide ? 'active' : '' ?>">
                                 <div class="row row-cols-1 row-cols-md-6 g-3">
                                     <?php foreach ($chunk as $product): ?>
-                                        <div class="col">
-                                            <div class="card" style="height: 330px;">
-                                                <div class="image-container" style="height: 65%;">
-                                                    <img src="<?= htmlspecialchars($product['image']) ?>" alt="<?= htmlspecialchars($product['title']) ?>" class="card-img-top h-100" style="object-fit: cover;" />
-                                                </div>
-                                                <div class="card-body d-flex flex-column justify-content-between" style="height: 35%;">
-                                                    <h6 class="card-title"><?= htmlspecialchars($product['title']) ?></h6>
-                                                    <p class="card-text"><?= htmlspecialchars($product['author']) ?></p>
+                                        <a href="book-details.php?id=<?= htmlspecialchars($product['id']) ?>" style="text-decoration: none; color: inherit;">
+                                            <div class="col">
+                                                <div class="card" style="height: 330px;">
+                                                    <div class="image-container" style="height: 65%;">
+                                                        <img src="<?= htmlspecialchars($product['image']) ?>" alt="<?= htmlspecialchars($product['title']) ?>" class="card-img-top h-100" style="object-fit: cover;" />
+                                                    </div>
+                                                    <div class="card-body d-flex flex-column justify-content-between" style="height: 35%;">
+                                                        <h6 class="card-title"><?= htmlspecialchars($product['title']) ?></h6>
+                                                        <p class="card-text"><?= htmlspecialchars($product['author']) ?></p>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
+                                        </a>
                                     <?php endforeach; ?>
                                 </div>
                             </div>
@@ -228,11 +238,175 @@
                     </div>
                 </div>
             </section>
+        </section>
 
+        <section class="m-4" id="whyUs">
+            <div class="container wrapabout" style="background-color: rgb(37, 37, 37);">
+                <div class="row">
+                    <div class="col-lg-6 align-items-center justify-content-left d-flex mb-5 mb-lg-0">
+                        <div class="blockabout">
+                            <div class="blockabout-inner text-center text-sm-start">
+                                <div class="title-big pb-3 mb-3">
+                                    <h3>Why Us?</h3>
+                                </div>
+                                <p class="description-p pe-0 pe-lg-0">
+                                    We offer a diverse selection of books for every reader, from fiction and
+                                    non-fiction to children's and academic texts. Benefit from expert
+                                    recommendations to discover your next favorite read. More than a bookstore,
+                                    we're a community hub hosting events, book clubs, and workshops. </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 mt-5 mt-lg-0">
+                        <figure class="potoaboutwrap">
+                            <img src="images/ourBookstore.jpg" alt="potoabout" class="img-fluid h-100" style="width: 100%; object-fit: cover;" />
+                        </figure>
+                    </div>
+                </div>
+            </div>
+        </section>
 
+        <section id="testimonials">
+            <div class="row d-flex justify-content-center">
+                <div class="col-md-10 col-xl-8 text-center">
+                    <h3 class="mb-4">What Readers Say About Us</h3>
+                </div>
+            </div>
+
+            <div class="row text-center">
+                <div class="col-md-4 mb-5 mb-md-0">
+                    <div class="d-flex justify-content-center mb-4">
+                        <img src="images/profil_1.jpg"
+                            class="rounded-circle shadow-1-strong" width="150" height="150" />
+                    </div>
+                    <h5 class="mb-3">Sarah J.</h5>
+                    <p class="px-xl-3">
+                        <i class="fas fa-quote-left pe-2"></i>"I found my all-time favorite book here!
+                        Shelf Symphony is a paradise for book lovers."
+                    </p>
+                </div>
+                <div class="col-md-4 mb-5 mb-md-0">
+                    <div class="d-flex justify-content-center mb-4">
+                        <img src="images/profil_2.jpg"
+                            class="rounded-circle shadow-1-strong" width="150" height="150" />
+                    </div>
+                    <h5 class="mb-3">James P.</h5>
+                    <p class="px-xl-3">
+                        <i class="fas fa-quote-left pe-2"></i>"Amazing collection and friendly staff.
+                        I always discover something new every visit!"
+                    </p>
+                </div>
+                <div class="col-md-4 mb-0">
+                    <div class="d-flex justify-content-center mb-4">
+                        <img src="images/profil_3.jpg"
+                            class="rounded-circle shadow-1-strong" width="150" height="150" />
+                    </div>
+                    <h5 class="mb-3">Emily R.</h5>
+                    <p class="px-xl-3">
+                        <i class="fas fa-quote-left pe-2"></i>"The community events are fantastic.
+                        Shelf Symphony is more than just a bookstore!"
+                    </p>
+                </div>
+            </div>
         </section>
 
     </main>
+
+    <footer class="text-center text-lg-start bg-dark text-white">
+        <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
+            <div class="me-5 d-none d-lg-block">
+                <span>Get connected with us on social networks:</span>
+            </div>
+            <div>
+                <a href="" class="me-4 text-reset">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="" class="me-4 text-reset">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a href="" class="me-4 text-reset">
+                    <i class="fab fa-google"></i>
+                </a>
+                <a href="" class="me-4 text-reset">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="" class="me-4 text-reset">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+                <a href="" class="me-4 text-reset">
+                    <i class="fab fa-github"></i>
+                </a>
+            </div>
+        </section>
+
+        <section class="">
+            <div class="container text-center text-md-start mt-5">
+                <div class="row mt-3">
+                    <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+                        <h6 class="text-uppercase fw-bold mb-4">
+                            <i class="fas fa-gem me-3"></i>Shelf Symphony
+                        </h6>
+                        <p>
+                            Shelf Symphony is more than a bookstore—it's a haven for book lovers and a hub for
+                            community connection. We offer a curated selection of books, expert recommendations,
+                            and a welcoming space for readers of all ages. </p>
+                    </div>
+
+                    <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+                        <h6 class="text-uppercase fw-bold mb-4">
+
+                        </h6>
+                        <p>
+                            <a href="#home" class="link-light link-offset-2 link-underline link-underline-opacity-0">Home</a>
+                        </p>
+                        <p>
+                            <a href="#about-us" class="link-light link-offset-2 link-underline link-underline-opacity-0">About Us</a>
+                        </p>
+                        <p>
+                            <a href="#collection" class="link-light link-offset-2 link-underline link-underline-opacity-0">Collections</a>
+                        </p>
+                        <p>
+                            <a href="#whyUs" class="link-light link-offset-2 link-underline link-underline-opacity-0">Why Us?</a>
+                        </p>
+                    </div>
+
+                    <!-- <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+                        <h6 class="text-uppercase fw-bold mb-4">
+                            Useful links
+                        </h6>
+                        <p>
+                            <a href="#!" class="text-reset">Pricing</a>
+                        </p>
+                        <p>
+                            <a href="#!" class="text-reset">Settings</a>
+                        </p>
+                        <p>
+                            <a href="#!" class="text-reset">Orders</a>
+                        </p>
+                        <p>
+                            <a href="#!" class="text-reset">Help</a>
+                        </p>
+                    </div> -->
+
+                    <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+                        <h6 class="text-uppercase fw-bold mb-4">Contact</h6>
+                        <p><i class="fas fa-home me-3"></i> Prishtine, 10012, KS</p>
+                        <p>
+                            <i class="fas fa-envelope me-3"></i>
+                            shelfsymphony@example.com
+                        </p>
+                        <p><i class="fas fa-phone me-3"></i> + 01 234 567 88</p>
+                        <p><i class="fas fa-print me-3"></i> + 01 234 567 89</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
+            © 2025 Copyright:
+            <a class="text-reset fw-bold" href="https://mdbootstrap.com/">Shelf Symphony</a>
+        </div>
+    </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
