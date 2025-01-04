@@ -99,7 +99,7 @@
         </section>
 
         <section class="collection" id="collection">
-            <div class="bestsellers" style="background-color: rgb(37, 37, 37); margin-top:10px">
+            <div class="bestsellers bg-dark" >
                 <section id="bestsellers">
                     <div class="sectionTitle" style="padding: 20px 0 10px 30px;">
                         <h4 class="display-6 fw-bold" id="title" style="font-size:xx-large; color:aliceblue;">Best Sellers</h4>
@@ -369,24 +369,6 @@
                             <a href="#whyUs" class="link-light link-offset-2 link-underline link-underline-opacity-0">Why Us?</a>
                         </p>
                     </div>
-
-                    <!-- <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
-                        <h6 class="text-uppercase fw-bold mb-4">
-                            Useful links
-                        </h6>
-                        <p>
-                            <a href="#!" class="text-reset">Pricing</a>
-                        </p>
-                        <p>
-                            <a href="#!" class="text-reset">Settings</a>
-                        </p>
-                        <p>
-                            <a href="#!" class="text-reset">Orders</a>
-                        </p>
-                        <p>
-                            <a href="#!" class="text-reset">Help</a>
-                        </p>
-                    </div> -->
 
                     <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
                         <h6 class="text-uppercase fw-bold mb-4">Contact</h6>

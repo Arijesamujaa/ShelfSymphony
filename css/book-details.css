@@ -1,0 +1,12 @@
+main {
+    padding-top: 30px;
+}
+
+body {
+    padding-top: 30px;
+}
+
+.card-img-top {
+    max-width: 80%;
+    height: auto;
+}
