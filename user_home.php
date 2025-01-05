@@ -1,3 +1,19 @@
+<?php
+include 'config.php';
+session_start();
+
+$user_id = $_SESSION['id'];
+
+if (!isset($user_id)) {
+    header('location:login.php');
+}
+
+$stmt = $conn->prepare("SELECT * FROM `cart` WHERE user_id = :user_id");
+$stmt->bindParam(':user_id', $user_id, PDO::PARAM_INT);
+$stmt->execute();
+$cart_row_number = $stmt->rowCount();
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,42 +27,11 @@
 </head>
 
 <body>
-    <nav class="navbar fixed-top bg-dark border-bottom border-body" data-bs-theme="dark">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">
-                <img src="images/svg/logo.svg" alt="Logo" class="navbar-logo">
-                Shelf Symphony
-            </a>
 
-            <ul class="nav justify-content-center">
-                <li class="nav-item">
-                    <a class="nav-link" href="#home">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#about-us">About Us</a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#collection" role="button" aria-expanded="false">
-                        Collections
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#bestsellers">Best Sellers</a></li>
-                        <li><a class="dropdown-item" href="#newarrivals">New Arrivals</a></li>
-                        <li><a class="dropdown-item" href="#booksets">Book Sets</a></li>
-                    </ul>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#whyUs">Why us?</a>
-                </li>
-            </ul>
+    <?php
+    include('navbar.php');
 
-            <div class="d-flex align-items-center">
-                <a href="#"><img src="images/svg/cart.svg" alt="Cart Logo" class="cart-logo"></a>
-                <a href="" style="margin-left: 20px;"><img src="images/svg/profile.svg" alt="Profile Logo" class="profile-logo"></a>
-            </div>
-
-        </div>
-    </nav>
+    ?>
 
 
     <main class="main">
@@ -99,7 +84,7 @@
         </section>
 
         <section class="collection" id="collection">
-            <div class="bestsellers bg-dark" >
+            <div class="bestsellers" style="background-color: rgb(37, 37, 37); margin-top:10px">
                 <section id="bestsellers">
                     <div class="sectionTitle" style="padding: 20px 0 10px 30px;">
                         <h4 class="display-6 fw-bold" id="title" style="font-size:xx-large; color:aliceblue;">Best Sellers</h4>
@@ -267,13 +252,13 @@
         </section>
 
         <section id="testimonials">
-            <div class="row d-flex justify-content-center">
+            <div class="row d-flex justify-content-center" style="padding-top: 20px;">
                 <div class="col-md-10 col-xl-8 text-center">
                     <h3 class="mb-4">What Readers Say About Us</h3>
                 </div>
             </div>
 
-            <div class="row text-center">
+            <div class="row text-center" style="padding-bottom: 30px;">
                 <div class="col-md-4 mb-5 mb-md-0">
                     <div class="d-flex justify-content-center mb-4">
                         <img src="images/profil_1.jpg"
@@ -391,6 +376,7 @@
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/cart.js"></script>
 </body>
 
 </html>

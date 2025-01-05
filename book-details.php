@@ -1,16 +1,61 @@
 <?php
 include('config.php');
 
-$id = isset($_GET['id']) ? intval($_GET['id']) : 0;
+session_start();
 
+$user_id = $_SESSION['id'];
+
+if (!isset($user_id)) {
+    header('location:login.php');
+}
+
+if (isset($_POST['add_to_cart'])) {
+
+    $user_id = $_SESSION['id'];
+    $pro_name = $_POST['name'];
+    $pro_price = $_POST['price'];
+    $pro_quantity = $_POST['quantity'];
+    $pro_image = $_POST['image'];
+
+    try {
+        $stmt = $conn->prepare("SELECT * FROM `cart` WHERE name = :name AND user_id = :user_id");
+        $stmt->execute([':name' => $pro_name, ':user_id' => $user_id]);
+
+        if ($stmt->rowCount() > 0) {
+            $message[] = 'Already added to cart!';
+        } else {
+            $stmt = $conn->prepare("INSERT INTO `cart` (user_id, name, price, quantity, image) 
+                                    VALUES (:user_id, :name, :price, :quantity, :image)");
+            $stmt->execute([
+                ':user_id' => $user_id,
+                ':name' => $pro_name,
+                ':price' => $pro_price,
+                ':quantity' => $pro_quantity,
+                ':image' => $pro_image,
+            ]);
+            $message[] = 'Product added to cart!';
+        }
+    } catch (PDOException $e) {
+        error_log("Cart Error: " . $e->getMessage());
+        $message[] = 'Something went wrong. Please try again later.';
+    }
+}
+
+$stmt = $conn->prepare("SELECT * FROM `cart` WHERE user_id = :user_id");
+$stmt->bindParam(':user_id', $user_id, PDO::PARAM_INT);
+$stmt->execute();
+$cart_row_number = $stmt->rowCount();
+
+
+$id = isset($_GET['id']) ? intval($_GET['id']) : 0;
 if ($id > 0) {
     $query = "SELECT * FROM products WHERE id = :id";
     $stmt = $conn->prepare($query);
     $stmt->bindParam(':id', $id, PDO::PARAM_INT);
     $stmt->execute();
     $book = $stmt->fetch(PDO::FETCH_ASSOC);
-
     if ($book) {
+
 ?>
 
         <!DOCTYPE html>
@@ -27,64 +72,46 @@ if ($id > 0) {
         </head>
 
         <body>
-            <nav class="navbar fixed-top bg-dark border-bottom border-body" data-bs-theme="dark">
-                <div class="container-fluid">
-                    <a class="navbar-brand" href="#">
-                        <img src="images/svg/logo.svg" alt="Logo" class="navbar-logo">
-                        Shelf Symphony
-                    </a>
+            <?php
+            include('navbar.php');
 
-                    <ul class="nav justify-content-center">
-                        <li class="nav-item">
-                            <a class="nav-link" href="user_home.php#home">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="user_home.php#about-us">About Us</a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="user_home.php#collection" role="button" aria-expanded="false">
-                                Collections
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="user_home.php#bestsellers">Best Sellers</a></li>
-                                <li><a class="dropdown-item" href="user_home.php#newarrivals">New Arrivals</a></li>
-                                <li><a class="dropdown-item" href="user_home.php#booksets">Book Sets</a></li>
-                            </ul>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="user_home.php#whyUs">Why us?</a>
-                        </li>
-                    </ul>
-
-                    <div class="d-flex align-items-center">
-                        <a href="#"><img src="images/svg/cart.svg" alt="Cart Logo" class="cart-logo"></a>
-                        <a href="" style="margin-left: 20px;"><img src="images/svg/profile.svg" alt="Profile Logo" class="profile-logo"></a>
-                    </div>
-
-                </div>
-            </nav>
+            ?>
 
             <main class="main">
                 <section class="py-5">
                     <div class="container px-4 px-lg-5 my-5">
-                        <div class="row gx-4 gx-lg-5 align-items-center">
-                            <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0" src="<?= htmlspecialchars($book['image']) ?>" alt="<?= htmlspecialchars($book['title']) ?>" /></div>
-                            <div class="col-md-6">
-                                <div class="mb-1"><?= htmlspecialchars($book['genre']) ?></div>
-                                <h1 class="display-5 fw-bolder"><?= htmlspecialchars($book['title']) ?></h1>
-                                <div class="fs-5 mb-5">
-                                    <span>Author: <?= htmlspecialchars($book['author']) ?></span>
+                        <form action="" method="POST" class="pro_box">
+
+                            <div class="row gx-4 gx-lg-5 align-items-center">
+                                <div class="col-md-6">
+                                    <input type="hidden" name="image" value="<?php echo $book['image']; ?>">
+                                    <img class=" card-img-top mb-5 mb-md-0" src="<?= htmlspecialchars($book['image']) ?>" alt="<?= htmlspecialchars($book['title']) ?>" />
                                 </div>
-                                <p><?= htmlspecialchars($book['description']) ?></p>
-                                <div class="d-flex">
-                                    <input class="form-control text-center me-3" id="inputQuantity" type="num" value="1" style="max-width: 3rem" />
-                                    <button class="btn btn-outline-dark flex-shrink-0" type="button">
-                                        <i class="bi-cart-fill me-1"></i>
-                                        Add to cart
-                                    </button>
+                                <div class="col-md-6">
+                                    <div class="mb-1"><?= htmlspecialchars($book['genre']) ?></div>
+                                    <input type="hidden" name="name" value="<?php echo $book['title']; ?>">
+                                    <h1 class="display-5 fw-bolder"><?= htmlspecialchars($book['title']) ?></h1>
+                                    <div class="fs-5 mb-5">
+                                        <span>Author: <?= htmlspecialchars($book['author']) ?></span>
+                                    </div>
+                                    <p><?= htmlspecialchars($book['description']) ?></p>
+                                    <div class="mb-1 text-success">
+                                        <input type="hidden" name="price" value="<?php echo $book['price']; ?>" />
+                                        <span id="price_<?= $book['id'] ?>">Price: <?= htmlspecialchars($book['price']) ?></span>
+                                    </div>
+                                    <div class="d-flex">
+                                        <input id="quantity_<?= $book['id'] ?>" name="quantity" type="number" min="1" value="1" style="max-width: 3rem;"
+                                            class="form-control form-control-sm"
+                                            onchange="updatePrice(<?= $book['id'] ?>, <?= $book['price'] ?>)" />
+                                        <button class="btn btn-outline-dark flex-shrink-0" type="submit" name="add_to_cart" style="margin-left: 10px;">
+                                            <i class="bi-cart-fill me-1"></i>
+                                            Add to cart
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+
+                        </form>
                     </div>
                 </section>
 
@@ -230,6 +257,9 @@ if ($id > 0) {
                     <a class="text-reset fw-bold" href="https://mdbootstrap.com/">Shelf Symphony</a>
                 </div>
             </footer>
+
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+            <script src="js/cart.js"></script>
         </body>
 
         </html>

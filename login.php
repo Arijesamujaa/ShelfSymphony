@@ -1,8 +1,7 @@
 <?php
 
-session_start();
-
 include_once('config.php');
+session_start();
 
 if(isset($_POST['submit']))
 {
@@ -94,7 +93,6 @@ if(isset($_POST['submit']))
                                                 <button data-mdb-button-init data-mdb-ripple-init class="btn btn-dark btn-lg btn-block" type="submit" id="submit" name="submit">Login</button>
                                             </div>
 
-                                            <a class="small text-muted" href="#!">Forgot password?</a>
                                             <p class="mb-5 pb-lg-2" style="color: #393f81;">Don't have an account? <a href="register.php"
                                                     style="color: #393f81;">Register here</a></p>
                                         </form>
