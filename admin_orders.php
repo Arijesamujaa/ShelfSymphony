@@ -34,7 +34,6 @@
                         echo '<th>Name</th>';
                         echo '<th>Number</th>';
                         echo '<th>Email</th>';
-                        echo '<th>Method</th>';
                         echo '<th>Address</th>';
                         echo '<th>Total Products</th>';
                         echo '<th>Total Price</th>';
@@ -52,7 +51,6 @@
                             echo '<td>' . $row['name'] . '</td>';
                             echo '<td>' . $row['number'] . '</td>';
                             echo '<td>' . $row['email'] . '</td>';
-                            echo '<td>' . $row['method'] . '</td>';
                             echo '<td>' . $row['address'] . '</td>';
                             echo '<td>' . $row['total_products'] . '</td>';
                             echo '<td>' . $row['total_price'] . '</td>';

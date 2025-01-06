@@ -35,7 +35,6 @@ CREATE TABLE `orders` (
   `name` varchar(100) NOT NULL,
   `number` varchar(12) NOT NULL,
   `email` varchar(100) NOT NULL,
-  `method` varchar(50) NOT NULL,
   `address` varchar(500) NOT NULL,
   `total_products` varchar(1000) NOT NULL,
   `total_price` int NOT NULL,

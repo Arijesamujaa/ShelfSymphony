@@ -227,11 +227,3 @@
     transition: all 0.3s;
 }
 
-#profile_nav.dropdown{
-    position: absolute;
-    right: 0;
-    left: auto;
-    margin-top: 10px;
-    min-width: 200px;
-    z-index: 1050;
-}

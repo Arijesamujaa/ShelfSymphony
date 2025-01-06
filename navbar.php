@@ -1,6 +1,9 @@
 <?php
-session_start();
+
 include('config.php');
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 
 $user_id = $_SESSION['id'];
 
@@ -54,7 +57,7 @@ if ($user) {
                     <img src="images/svg/search.svg">
                 </span>
             </div>
-            <a href="cart.php" style="margin-left: 20px;">
+            <a href="cart.php" style="margin-left: 10px;">
                 <img src="images/svg/cart.svg" alt="Cart Logo" class="cart-logo">
                 <span id="cart-count" class="badge bg-warning">
                     <?php echo $cart_row_number ?>
