@@ -24,7 +24,6 @@ if (isset($_POST['order_btn'])) {
     $cart_products = [];
 
     try {
-        // Retrieve cart items for the user
         $cart_query = $conn->prepare("SELECT * FROM `cart` WHERE user_id = :user_id");
         $cart_query->bindParam(':user_id', $user_id, PDO::PARAM_INT);
         $cart_query->execute();
@@ -39,7 +38,6 @@ if (isset($_POST['order_btn'])) {
 
         $total_products = implode(' ', $cart_products);
 
-        // Check if the order already exists
         $order_query = $conn->prepare("SELECT * FROM `orders` WHERE name = :name AND number = :number AND email = :email AND address = :address AND total_products = :total_products AND total_price = :total_price");
         $order_query->bindParam(':name', $name);
         $order_query->bindParam(':number', $number);
@@ -55,7 +53,6 @@ if (isset($_POST['order_btn'])) {
             if ($order_query->rowCount() > 0) {
                 $message[] = 'Order already placed!';
             } else {
-                // Insert the new order
                 $insert_order = $conn->prepare("INSERT INTO `orders` (user_id, name, number, email, address, total_products, total_price, placed_on) VALUES (:user_id, :name, :number, :email, :address, :total_products, :total_price, :placed_on)");
                 $insert_order->bindParam(':user_id', $user_id, PDO::PARAM_INT);
                 $insert_order->bindParam(':name', $name);
@@ -69,7 +66,6 @@ if (isset($_POST['order_btn'])) {
 
                 $message[] = 'Order placed successfully!';
 
-                // Delete items from the cart after successful order placement
                 $delete_cart = $conn->prepare("DELETE FROM `cart` WHERE user_id = :user_id");
                 $delete_cart->bindParam(':user_id', $user_id, PDO::PARAM_INT);
                 $delete_cart->execute();
@@ -104,50 +100,26 @@ if (isset($_POST['order_btn'])) {
                         <div class="card-body p-4">
                             <h1 class="text-center">Place Your Order</h1>
                             <form action="" method="post" class="mt-4">
-                                <!-- Name -->
                                 <div class="mb-3">
                                     <label for="name" class="form-label">Full Name</label>
                                     <input type="text" class="form-control" id="name" name="name" required>
                                 </div>
 
-                                <!-- Number -->
                                 <div class="mb-3">
                                     <label for="number" class="form-label">Phone Number</label>
                                     <input type="text" class="form-control" id="number" name="number" required>
                                 </div>
 
-                                <!-- Email -->
                                 <div class="mb-3">
                                     <label for="email" class="form-label">Email</label>
                                     <input type="email" class="form-control" id="email" name="email" required>
                                 </div>
 
-                                <!-- Address -->
                                 <div class="mb-3">
                                     <label for="address" class="form-label">Address</label>
                                     <textarea class="form-control" id="address" name="address" rows="3" required></textarea>
                                 </div>
 
-                                <!-- Total Products -->
-                                <!-- <div class="mb-3">
-                                    <label for="total_products" class="form-label">Total Products</label>
-                                    <input type="text" class="form-control" id="total_products" name="total_products"
-                                        placeholder="List of products" required>
-                                </div> -->
-
-                                <!-- Total Price -->
-                                <!-- <div class="mb-3">
-                                    <label for="total_price" class="form-label">Total Price</label>
-                                    <input type="number" class="form-control" id="total_price" name="total_price" required>
-                                </div> -->
-
-                                <!-- Placed On -->
-                                <!-- <div class="mb-3">
-                                    <label for="placed_on" class="form-label">Date</label>
-                                    <input type="date" class="form-control" id="placed_on" name="placed_on" required>
-                                </div> -->
-
-                                <!-- Submit Button -->
                                 <button type="submit" class="btn btn-primary w-40" name="order_btn" class="product_btn">Submit Order</button>
                             </form>
                         </div>
