@@ -120,8 +120,15 @@ if (isset($_POST['order_btn'])) {
                                     <textarea class="form-control" id="address" name="address" rows="3" required></textarea>
                                 </div>
 
-                                <button type="submit" class="btn btn-primary w-40" name="order_btn" class="product_btn">Submit Order</button>
+                                <button type="submit" class="btn btn-warning w-40" name="order_btn" class="product_btn">Submit Order</button>
                             </form>
+                            <?php
+                            if (isset($message)) {
+                                foreach ($message as $msg) {
+                                    echo '<div class="alert alert-success" role="alert">' . $msg . '</div>';
+                                }
+                            }
+                            ?>
                         </div>
                     </div>
                 </div>

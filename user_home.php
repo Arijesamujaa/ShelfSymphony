@@ -133,7 +133,7 @@ $cart_row_number = $stmt->rowCount();
                         <?php
                         include('config.php');
 
-                        $limit = 5;
+                        $limit = 12;
 
                         $query = "SELECT * FROM products ORDER BY id DESC LIMIT :limit";
                         $stmt = $conn->prepare($query);
@@ -175,50 +175,87 @@ $cart_row_number = $stmt->rowCount();
                     <h4 class="display-6 fw-bold" style="font-size: xx-large;">Book Sets</h4>
                     <div class="row g-4">
                         <div class="col g-4 text-bg-dark p-3">
-                            <div class="bg-dark mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center text-white overflow-hidden">
-                                <div class="my-3 py-3">
-                                    <h2 class="display-5 fw-normal">Shatter Me</h2>
-                                    <p class="lead">Shatter Me Series By Tahereh Mafi 7 Books Collection Set</p>
+                            <a href="book-sets.php?id=18" style="text-decoration: none; color: inherit;">
+                                <?php
+                                include('config.php');
+                                $query = "SELECT * FROM products WHERE id=18";
+                                $stmt = $conn->prepare($query);
+                                $stmt->execute();
+                                $book = $stmt->fetch(PDO::FETCH_ASSOC);
+                                ?>
+                                <div class="bg-dark mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center text-white overflow-hidden">
+                                    <div class="my-3 py-3">
+                                        <h2 class="display-5 fw-normal"><?php echo htmlspecialchars($book['title']); ?></h2>
+                                        <p class="lead">Shatter Me Series By Tahereh Mafi 6 Books Collection Set</p>
+                                    </div>
+                                    <div class="bg-light box-shadow mx-auto" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;">
+                                        <img src="images/bookSets/shatterMe.jpg" alt="Shatter Me" class="img-fluid rounded-start h-100" style="width: 100%; object-fit: cover;">
+                                    </div>
                                 </div>
-                                <div class="bg-light box-shadow mx-auto" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;">
-                                    <img src="images/bookSets/shatterMe.jpg" alt="Shatter Me" class="img-fluid rounded-start h-100" style="width: 100%; object-fit: cover;">
-                                </div>
-                            </div>
+                            </a>
                         </div>
+
                         <div class="col g-4">
-                            <div class="bg-light mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
-                                <div class="my-3 p-3">
-                                    <h2 class="display-5 fw-normal">Maze Runner</h2>
-                                    <p class="lead">The Maze Runner Series By James Dashner 5 Books Collection Set</p>
+                            <a href="book-sets.php?id=19" style="text-decoration: none; color: inherit;">
+                                <?php
+                                include('config.php');
+                                $query = "SELECT * FROM products WHERE id=19";
+                                $stmt = $conn->prepare($query);
+                                $stmt->execute();
+                                $book = $stmt->fetch(PDO::FETCH_ASSOC);
+                                ?>
+                                <div class="bg-light mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
+                                    <div class="my-3 p-3">
+                                        <h2 class="display-5 fw-normal"><?php echo htmlspecialchars($book['title']); ?></h2>
+                                        <p class="lead">The Maze Runner Series By James Dashner 5 Books Collection Set</p>
+                                    </div>
+                                    <div class="bg-dark box-shadow mx-auto" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;">
+                                        <img src="images/bookSets/mazeRunner.jpg" alt="Shatter Me" class="img-fluid rounded-start h-100" style="width: 100%; object-fit: cover;">
+                                    </div>
                                 </div>
-                                <div class="bg-dark box-shadow mx-auto" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;">
-                                    <img src="images/bookSets/mazeRunner.jpg" alt="Shatter Me" class="img-fluid rounded-start h-100" style="width: 100%; object-fit: cover;">
-                                </div>
-                            </div>
+                            </a>
                         </div>
                     </div>
                     <div class="row g-4">
                         <div class="col g-4">
-                            <div class="bg-light mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
-                                <div class="my-3 p-3">
-                                    <h2 class="display-5 fw-normal">A Court of Thrones</h2>
-                                    <p class="lead">A Court of Thorns and Roses 5 Books Box Set by Sarah J. Maas</p>
+                            <a href="book-sets.php?id=20" style="text-decoration: none; color: inherit;">
+                                <?php
+                                include('config.php');
+                                $query = "SELECT * FROM products WHERE id=20";
+                                $stmt = $conn->prepare($query);
+                                $stmt->execute();
+                                $book = $stmt->fetch(PDO::FETCH_ASSOC);
+                                ?>
+                                <div class="bg-light mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
+                                    <div class="my-3 p-3">
+                                        <h2 class="display-5 fw-normal"><?php echo htmlspecialchars($book['title']); ?></h2>
+                                        <p class="lead">A Court of Thorns and Roses 5 Books Box Set by Sarah J. Maas</p>
+                                    </div>
+                                    <div class="bg-dark box-shadow mx-auto" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;">
+                                        <img src="images/bookSets/courtOfThrones.jpg" alt="Shatter Me" class="img-fluid rounded-start h-100" style="width: 100%; object-fit: cover;">
+                                    </div>
                                 </div>
-                                <div class="bg-dark box-shadow mx-auto" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;">
-                                    <img src="images/bookSets/courtOfThrones.jpg" alt="Shatter Me" class="img-fluid rounded-start h-100" style="width: 100%; object-fit: cover;">
-                                </div>
-                            </div>
+                            </a>
                         </div>
                         <div class="col g-4 text-bg-dark p-3">
-                            <div class="bg-dark mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center text-white overflow-hidden">
-                                <div class="my-3 py-3">
-                                    <h2 class="display-5 fw-normal">Slammed Series</h2>
-                                    <p class="lead">Slammed Series by Colleen Hoover 3 Books Collection Set - Fiction - Paperback</p>
+                            <a href="book-sets.php?id=21" style="text-decoration: none; color: inherit;">
+                                <?php
+                                include('config.php');
+                                $query = "SELECT * FROM products WHERE id=21";
+                                $stmt = $conn->prepare($query);
+                                $stmt->execute();
+                                $book = $stmt->fetch(PDO::FETCH_ASSOC);
+                                ?>
+                                <div class="bg-dark mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center text-white overflow-hidden">
+                                    <div class="my-3 py-3">
+                                        <h2 class="display-5 fw-normal"><?php echo htmlspecialchars($book['title']); ?></h2>
+                                        <p class="lead">Slammed Series by Colleen Hoover 3 Books Collection Set - Fiction - Paperback</p>
+                                    </div>
+                                    <div class="bg-light box-shadow mx-auto" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;">
+                                        <img src="images/bookSets/slammed.jpg" alt="Shatter Me" class="img-fluid rounded-start h-100" style="width: 100%; object-fit: cover;">
+                                    </div>
                                 </div>
-                                <div class="bg-light box-shadow mx-auto" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;">
-                                    <img src="images/bookSets/slammed.jpg" alt="Shatter Me" class="img-fluid rounded-start h-100" style="width: 100%; object-fit: cover;">
-                                </div>
-                            </div>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -293,6 +330,9 @@ $cart_row_number = $stmt->rowCount();
                     </p>
                 </div>
             </div>
+            <div>
+
+            </div>
         </section>
 
     </main>
@@ -342,21 +382,26 @@ $cart_row_number = $stmt->rowCount();
 
                         </h6>
                         <p>
-                            <a href="#home" class="link-light link-offset-2 link-underline link-underline-opacity-0">Home</a>
+                            <a href="#home" class="link-light link-offset-2 link-underline link-underline-opacity-0 link-underline-opacity-100-hover">Home</a>
                         </p>
                         <p>
-                            <a href="#about-us" class="link-light link-offset-2 link-underline link-underline-opacity-0">About Us</a>
+                            <a href="#about-us" class="link-light link-offset-2 link-underline link-underline-opacity-0 link-underline-opacity-100-hover">About Us</a>
                         </p>
                         <p>
-                            <a href="#collection" class="link-light link-offset-2 link-underline link-underline-opacity-0">Collections</a>
+                            <a href="#collection" class="link-light link-offset-2 link-underline link-underline-opacity-0 link-underline-opacity-100-hover">Collections</a>
                         </p>
                         <p>
-                            <a href="#whyUs" class="link-light link-offset-2 link-underline link-underline-opacity-0">Why Us?</a>
+                            <a href="#whyUs" class="link-light link-offset-2 link-underline link-underline-opacity-0 link-underline-opacity-100-hover">Why Us?</a>
                         </p>
                     </div>
 
                     <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
                         <h6 class="text-uppercase fw-bold mb-4">Contact</h6>
+                        <a href="contact.php" class="link-light link-offset-2 link-underline link-underline-opacity-0 link-underline-opacity-100-hover">
+                            <i class="fas fa-home me-3"></i>Contact Us
+                        </a>
+
+
                         <p><i class="fas fa-home me-3"></i> Prishtine, 10012, KS</p>
                         <p>
                             <i class="fas fa-envelope me-3"></i>

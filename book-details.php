@@ -225,21 +225,26 @@ if ($id > 0) {
 
                                 </h6>
                                 <p>
-                                    <a href="user_home.php#home" class="link-light link-offset-2 link-underline link-underline-opacity-0">Home</a>
+                                    <a href="#home" class="link-light link-offset-2 link-underline link-underline-opacity-0 link-underline-opacity-100-hover">Home</a>
                                 </p>
                                 <p>
-                                    <a href="user_home.php#about-us" class="link-light link-offset-2 link-underline link-underline-opacity-0">About Us</a>
+                                    <a href="#about-us" class="link-light link-offset-2 link-underline link-underline-opacity-0 link-underline-opacity-100-hover">About Us</a>
                                 </p>
                                 <p>
-                                    <a href="user_home.php#collection" class="link-light link-offset-2 link-underline link-underline-opacity-0">Collections</a>
+                                    <a href="#collection" class="link-light link-offset-2 link-underline link-underline-opacity-0 link-underline-opacity-100-hover">Collections</a>
                                 </p>
                                 <p>
-                                    <a href="user_home.php#whyUs" class="link-light link-offset-2 link-underline link-underline-opacity-0">Why Us?</a>
+                                    <a href="#whyUs" class="link-light link-offset-2 link-underline link-underline-opacity-0 link-underline-opacity-100-hover">Why Us?</a>
                                 </p>
                             </div>
 
                             <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
                                 <h6 class="text-uppercase fw-bold mb-4">Contact</h6>
+                                <a href="contact.php" class="link-light link-offset-2 link-underline link-underline-opacity-0 link-underline-opacity-100-hover">
+                                    <i class="fas fa-home me-3"></i>Contact Us
+                                </a>
+
+
                                 <p><i class="fas fa-home me-3"></i> Prishtine, 10012, KS</p>
                                 <p>
                                     <i class="fas fa-envelope me-3"></i>

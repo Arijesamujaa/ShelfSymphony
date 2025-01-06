@@ -77,7 +77,7 @@
                 <div class="row row-cols-2 g-3">
                     <?php foreach ($products as $product): ?>
                         <div class="col">
-                            <div class="card" style="height: 350px;">
+                            <div class="card" >
                                 <div class="row g-0">
                                     <div class="col-md-4">
                                         <img src="<?= htmlspecialchars($product['image']) ?>" alt="<?= htmlspecialchars($product['title']) ?>" class="img-fluid rounded-start h-100" style="width: 100%; object-fit: cover;" />
