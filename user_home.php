@@ -43,11 +43,11 @@ $cart_row_number = $stmt->rowCount();
                     From timeless classics to the latest bestsellers, find your next favorite book right here.
                 </p>
                 <br>
-                <!-- <a href="user_home_more.php">
+                <a href="user_home_more.php">
                     <button type="button" class="home_btn btn btn-outline-light" style="width: 150px;">
                         More
                     </button>
-                </a> -->
+                </a>
             </div>
         </section>
 
@@ -175,7 +175,7 @@ $cart_row_number = $stmt->rowCount();
                     <h4 class="display-6 fw-bold" style="font-size: xx-large;">Book Sets</h4>
                     <div class="row g-4">
                         <div class="col g-4 text-bg-dark p-3">
-                            <a href="book-sets.php?id=18" style="text-decoration: none; color: inherit;">
+                            <a href="book-details.php?id=18" style="text-decoration: none; color: inherit;">
                                 <?php
                                 include('config.php');
                                 $query = "SELECT * FROM products WHERE id=18";
@@ -196,7 +196,7 @@ $cart_row_number = $stmt->rowCount();
                         </div>
 
                         <div class="col g-4">
-                            <a href="book-sets.php?id=19" style="text-decoration: none; color: inherit;">
+                            <a href="book-details.php?id=19" style="text-decoration: none; color: inherit;">
                                 <?php
                                 include('config.php');
                                 $query = "SELECT * FROM products WHERE id=19";
@@ -218,7 +218,7 @@ $cart_row_number = $stmt->rowCount();
                     </div>
                     <div class="row g-4">
                         <div class="col g-4">
-                            <a href="book-sets.php?id=20" style="text-decoration: none; color: inherit;">
+                            <a href="book-details.php?id=20" style="text-decoration: none; color: inherit;">
                                 <?php
                                 include('config.php');
                                 $query = "SELECT * FROM products WHERE id=20";
@@ -238,7 +238,7 @@ $cart_row_number = $stmt->rowCount();
                             </a>
                         </div>
                         <div class="col g-4 text-bg-dark p-3">
-                            <a href="book-sets.php?id=21" style="text-decoration: none; color: inherit;">
+                            <a href="book-details.php?id=21" style="text-decoration: none; color: inherit;">
                                 <?php
                                 include('config.php');
                                 $query = "SELECT * FROM products WHERE id=21";

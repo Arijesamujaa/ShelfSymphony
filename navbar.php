@@ -11,6 +11,7 @@ $query = "SELECT username, email FROM users WHERE id = :user_id";
 $stmt = $conn->prepare($query);
 $stmt->bindParam(':user_id', $user_id, PDO::PARAM_INT);
 $stmt->execute();
+$cart_row_number = $stmt->rowCount();
 
 $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
@@ -52,10 +53,12 @@ if ($user) {
 
         <div class="d-flex align-items-center">
             <div class="input-group rounded" style="width: 180px;">
-                <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
-                <span class="input-group-text border-0" id="search-addon">
-                    <img src="images/svg/search.svg">
-                </span>
+                <form action="search.php" method="get" class="d-flex" style="width: 100%;">
+                    <input type="search" name="query" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" required />
+                    <button type="submit" class="input-group-text border-0" id="search-addon">
+                        <img src="images/svg/search.svg" alt="Search">
+                    </button>
+                </form>
             </div>
             <a href="cart.php" style="margin-left: 10px;">
                 <img src="images/svg/cart.svg" alt="Cart Logo" class="cart-logo">
