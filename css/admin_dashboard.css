@@ -38,6 +38,8 @@ section.active {
     display: block;
 }
 
+
+
 @media (max-width: 576px) {
     .custom-link {
         padding: 8px 10px;

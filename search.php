@@ -47,7 +47,7 @@ if (isset($_GET['query'])) {
 
     <section class="py-5">
         <div class="container px-4 px-lg-5 my-5">
-            <h1>Search Results for: <?= htmlspecialchars($search_query) ?></h1>
+            <h3>Search Results for: <?= htmlspecialchars($search_query) ?></h3>
 
             <?php if (count($results) > 0): ?>
                 <ul class="list-unstyled">

@@ -1,229 +1,150 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    box-sizing: border-box;
+}
+
 .navbar {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
     padding: 1rem 2rem;
 }
 
-.navbar-logo {
-    width: 40px;
-    height: auto;
-    margin-right: 0.5rem;
-}
-
 .navbar-brand {
-    display: flex;
-    align-items: center;
-    font-family: "Cursive", sans-serif;
-    font-size: 1.5rem;
-    color: #fff;
-    text-decoration: none;
+    font-size: 1.2rem;
 }
 
 .nav ul {
     display: flex;
+    flex-wrap: wrap;
     list-style: none;
     padding: 0;
     margin: 0;
 }
 
 .nav-item {
-    margin: 0 1rem;
+    margin: 0 0.5rem;
 }
 
 .nav-link {
-    color: #fff;
-    text-decoration: none;
-    font-size: 1rem;
-    font-weight: 500;
-    text-transform: uppercase;
+    font-size: 0.9rem;
 }
 
-.nav-link.active {
-    color: #b88a00;
-    font-weight: bold;
-    border-bottom: 2px solid #b88a00;
-}
+@media screen and (max-width: 768px) {
+    .nav ul {
+        flex-direction: column;
+        width: 100%;
+        text-align: center;
+    }
 
-.nav-link:hover {
-    color: #ffc107;
-}
+    .nav-item {
+        margin: 0.5rem 0;
+    }
 
-.nav-icon {
-    color: #fff;
-    font-size: 1.2rem;
-    margin-left: 1rem;
-    text-decoration: none;
-}
-
-.dropdown{
-    overflow: hidden;
-}
-
-.dropdown:hover{
-    overflow: visible;
-}
-
-.dropdown-menu {
-    position: absolute;
-    left: 0;
-    top: 100%;
-    white-space: nowrap;
-}
-
-.dropdown:hover .dropdown-menu {
-    display: block;
-    color: #fff;
-}
-
-.dropdown-item:active{
-    background-color: #3e3e3e;
+    .nav-link {
+        font-size: 1rem;
+    }
 }
 
 .bg-image {
-    background-image: url("../images/bookstore-background.jpeg");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    /* align-items: flex-end; */
-    align-items: center;
-    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.7);
-    opacity: 0.9;
+    padding: 2rem 1rem;
+    height: auto;
+    text-align: center;
 }
 
 .bg-image h2 {
-    font-size: 3rem;
-    font-weight: bold;
-    color: #fff;
-    margin-bottom: 0.5rem;
-    text-transform: uppercase;
-    /* text-align: right; */
+    font-size: 2rem;
 }
 
 .bg-image h3 {
-    font-size: 2rem;
-    font-weight: 500;
-    color: #f0f0f0;
-    margin-bottom: 1rem;
-    font-style: italic;
-    /* text-align: right; */
+    font-size: 1.5rem;
 }
 
 .bg-image p {
-    font-size: 1.2rem;
-    line-height: 1.6;
-    color: #e0e0e0;
-    text-align: center;
-    max-width: 700px;
-    margin: 0 auto;
-    /* text-align: right; */
+    font-size: 1rem;
+    max-width: 90%;
 }
 
-.home_btn {
-    transition: transform 0.2s ease;
-}
-
-.home_btn:hover {
-    transform: scale(1.1);
-}
-
-#about-us{
-    margin: 20px 40px 0px 40px;
+#about-us {
+    margin: 10px 20px;
 }
 
 #about-us .img-fluid {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-    border-radius: 10px;
-    transition: transform 0.3s ease-in-out;
-}
-
-#about-us .img-fluid:hover {
-    transform: scale(1.05);
-}
-
-#bestsellers {
-    background-color: rgb(37, 37, 37);
+    height: auto;
+    max-width: 100%;
 }
 
 #bestsellers #title {
-    font-size: xx-large;
-    color: aliceblue;
-    margin-top: 50px;
+    font-size: x-large;
 }
 
 #bestsellers .card {
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    margin: 0.5rem;
 }
 
-#bestsellers .card:hover {
-    transform: scale(1.05);
-    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
-}
+@media screen and (max-width: 768px) {
+    #bestsellers .carousel-inner {
+        padding: 10px;
+    }
 
-#bestsellers .carousel-inner {
-    padding: 20px;
-}
-
-.carousel-item.row{
-    margin: 50px;
-}
-
-#newarrivals .card {
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-#newarrivals .card:hover {
-    transform: scale(1.05);
-    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+    .carousel-item.row {
+        margin: 10px;
+    }
 }
 
 #newarrivals .carousel-inner {
-    padding: 20px;
+    padding: 10px;
 }
 
 #whyUs {
-    background: rgba(32, 33, 36, 0.1);
-    position: relative;
-}
-
-.blockabout {
-    padding: 20px;
-    background: white;
-}
-
-.blockabout-inner {
-    padding: 30px;
-    border: 1px solid rgba(32, 33, 36, 0.1);
+    padding: 1rem;
 }
 
 .sosmed-horizontal a i {
-    border: 1px solid #070707;
-    border-radius: 50%;
-    color: #070707;
-    display: inline-block;
-    height: 30px;
-    width: 30px;
-    line-height: 30px;
-    margin: auto 3px;
-    font-size: 15px;
-    text-align: center;
-    transition: all 0.3s;
+    height: 25px;
+    width: 25px;
+    font-size: 12px;
+    line-height: 25px;
 }
 
 .rey-btn {
-    border: 2px solid #070707;
-    padding: 10px 40px;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    font-size: 13px;
-    font-weight: 700;
-    border-radius: 50px;
-    transition: all 0.3s;
+    padding: 8px 20px;
+    font-size: 11px;
 }
 
+@media screen and (max-width: 576px) {
+    .navbar-logo {
+        width: 30px;
+    }
+
+    .bg-image h2 {
+        font-size: 1.5rem;
+    }
+
+    .bg-image h3 {
+        font-size: 1.2rem;
+    }
+
+    #about-us {
+        margin: 10px;
+    }
+
+    #about-us .img-fluid {
+        height: auto;
+    }
+
+    #bestsellers #title {
+        font-size: large;
+    }
+
+    .carousel-item.row {
+        margin: 5px;
+    }
+
+    .rey-btn {
+        padding: 5px 10px;
+    }
+}
